@@ -1,0 +1,57 @@
+jx_browser_data 78
+# project tree
+0 "root"
+T
+1 "DataHeaderFl"
+T
+2 "HeaderFl.cc"
+F
+"./HeaderFl.cc"
+T
+2 "AModeListFl.cc"
+F
+"./AModeListFl.cc"
+T
+2 "ChanNamesDlog.cc"
+F
+"./ChanNamesDlog.cc"
+T
+2 "EditAgDlog.cc"
+F
+"./EditAgDlog.cc"
+T
+2 "EditDgDlog.cc"
+F
+"./EditDgDlog.cc"
+T
+2 "EditSgDlog.cc"
+F
+"./EditSgDlog.cc"
+T
+2 "GainDialog.cc"
+F
+"./GainDialog.cc"
+T
+2 "InitHdrDlog.cc"
+F
+"./InitHdrDlog.cc"
+T
+2 "ModuleNode.cc"
+F
+"./ModuleNode.cc"
+F
+F
+# tasks
+4
+"make depend"
+F
+# build settings
+0
+T
+"a.out"
+""
+"make -k all"
+# search paths
+F
+# C preprocessor
+F

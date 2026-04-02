@@ -1,0 +1,631 @@
+#
+#	Makefile for libHeaderFlk.a
+#	
+#	20-sep-2002
+#	Modified:
+#	15-aug-06  ?
+#	26-sep-12  bhb	removed AModeListFL.cc
+#	28-sep-12  bhb	add UI make
+#	15-nov-12  bhb	add UnitsDlog.cc
+#	11-feb-14  bhb	modified for 64/32bit
+#	
+include ../makeinclude
+
+OPTIMIZER = -g
+
+#
+CXXFLAGS= $(OPTIN) $(OPTIMIZER) $(CXXOPTS) $(INCLUDEDIR)
+ARFLAGS= rs
+#
+INCLUDEDIR = -I/usr/local/include
+
+%.o : %.cc
+	${CXX} ${CPPFLAGS} ${CXXFLAGS} -c $< -o $@
+
+LIB = $(LIBPTH)/libHeaderFl.a
+
+#SOURCES = ChanNamesDlog.cc ModuleNode.cc
+
+SOURCES = HeaderFl.cc EditSgDlog.cc EditAgDlog.cc EditDgDlog.cc EditRtAgDlog.cc GainDialog.cc \
+			ModuleNode.cc ChannelNamesDlog.cc UnitsDlog.cc
+
+LIBOBJS = $(SOURCES:.cc=.o)
+
+$(LIB):	$(LIB)($(LIBOBJS)) sublib
+	
+sublib:
+	( cd UI; make)
+
+clean:
+	rm -f $(LIB) *.o UI/*.o
+	
+tidy:
+	rm -f *.o UI/*.o
+
+depend: $(SOURCES)
+	makedepend -I. -I/usr/local/include $(SOURCES) >/dev/null 2>&1
+	( cd UI; make depend)
+# DO NOT DELETE
+
+HeaderFl.o: HeaderFl.h /usr/local/include/Data/DataHeader.h
+HeaderFl.o: /usr/local/include/Data/SampleGr.h
+HeaderFl.o: /usr/local/include/Data/ChannelSet.h
+HeaderFl.o: /usr/local/include/Data/ChannelGr.h /usr/include/stdio.h
+HeaderFl.o: /usr/include/features.h /usr/include/stdc-predef.h
+HeaderFl.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+HeaderFl.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+HeaderFl.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+HeaderFl.o: /usr/include/_G_config.h /usr/include/wchar.h
+HeaderFl.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+HeaderFl.o: /usr/include/string.h /usr/include/xlocale.h
+HeaderFl.o: /usr/local/include/Data/AnalysisGr.h
+HeaderFl.o: /usr/local/include/Data/AModule.h /usr/local/include/Data/CData.h
+HeaderFl.o: /usr/local/include/Math/MatD.h
+HeaderFl.o: /usr/local/include/Data/DataTypes.h /usr/include/math.h
+HeaderFl.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+HeaderFl.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+HeaderFl.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+HeaderFl.o: /usr/include/bits/mathcalls.h
+HeaderFl.o: /usr/local/include/PlotFl/DataDisplay.h
+HeaderFl.o: /usr/local/include/Data/ModuleControls.h
+HeaderFl.o: /usr/local/include/Patterns/Observer.h
+HeaderFl.o: /usr/local/include/Patterns/Command.h
+HeaderFl.o: /usr/local/include/Fltk/ProgressCmd.h
+HeaderFl.o: /usr/local/include/Fltk/Progress.h
+HeaderFl.o: /usr/local/include/fltk/ProgressBar.h
+HeaderFl.o: /usr/local/include/fltk/Widget.h /usr/local/include/fltk/Style.h
+HeaderFl.o: /usr/local/include/fltk/Color.h /usr/local/include/fltk/FL_API.h
+HeaderFl.o: /usr/local/include/fltk/Flags.h
+HeaderFl.o: /usr/local/include/fltk/Rectangle.h
+HeaderFl.o: /usr/local/include/fltk/Window.h /usr/local/include/fltk/Group.h
+HeaderFl.o: /usr/local/include/fltk/Button.h /usr/local/include/fltk/run.h
+HeaderFl.o: /usr/include/boost/shared_ptr.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/shared_ptr.hpp
+HeaderFl.o: /usr/include/boost/config.hpp /usr/include/boost/config/user.hpp
+HeaderFl.o: /usr/include/boost/config/select_compiler_config.hpp
+HeaderFl.o: /usr/include/boost/config/compiler/gcc.hpp
+HeaderFl.o: /usr/include/boost/config/select_platform_config.hpp
+HeaderFl.o: /usr/include/boost/config/platform/linux.hpp
+HeaderFl.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+HeaderFl.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+HeaderFl.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+HeaderFl.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+HeaderFl.o: /usr/include/time.h /usr/include/sys/select.h
+HeaderFl.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+HeaderFl.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+HeaderFl.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+HeaderFl.o: /usr/include/bits/stdlib-float.h
+HeaderFl.o: /usr/include/boost/config/posix_features.hpp
+HeaderFl.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+HeaderFl.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+HeaderFl.o: /usr/include/getopt.h /usr/include/boost/config/suffix.hpp
+HeaderFl.o: /usr/include/boost/config/no_tr1/memory.hpp
+HeaderFl.o: /usr/include/boost/assert.hpp /usr/include/assert.h
+HeaderFl.o: /usr/include/boost/current_function.hpp
+HeaderFl.o: /usr/include/boost/checked_delete.hpp
+HeaderFl.o: /usr/include/boost/throw_exception.hpp
+HeaderFl.o: /usr/include/boost/exception/detail/attribute_noreturn.hpp
+HeaderFl.o: /usr/include/boost/detail/workaround.hpp
+HeaderFl.o: /usr/include/boost/config.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/shared_count.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/bad_weak_ptr.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/sp_counted_base.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/sp_has_sync.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_x86.hpp
+HeaderFl.o: /usr/include/boost/detail/sp_typeinfo.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp
+HeaderFl.o: /usr/include/boost/utility/addressof.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/sp_convertible.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/spinlock_pool.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/spinlock.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/spinlock_pt.hpp
+HeaderFl.o: /usr/include/pthread.h /usr/include/sched.h
+HeaderFl.o: /usr/include/bits/sched.h /usr/include/bits/setjmp.h
+HeaderFl.o: /usr/include/boost/memory_order.hpp
+HeaderFl.o: /usr/include/boost/smart_ptr/detail/operator_bool.hpp
+HeaderFl.o: /usr/local/include/Data/RtAnalysisGr.h
+HeaderFl.o: /usr/local/include/fltk/Widget.h /usr/local/include/fltk/Menu.h
+HeaderFl.o: UI/InitHdrDlog.h /usr/local/include/Fltk/Dialog.h
+HeaderFl.o: /usr/local/include/fltk/Group.h
+HeaderFl.o: /usr/local/include/HdrFl/HeaderFl.h
+HeaderFl.o: /usr/local/include/fltk/Input.h /usr/local/include/fltk/Output.h
+HeaderFl.o: /usr/local/include/fltk/Input.h EditSgDlog.h UI/EditSgDlogUI.h
+HeaderFl.o: /usr/local/include/fltk/ValueOutput.h
+HeaderFl.o: /usr/local/include/fltk/Valuator.h
+HeaderFl.o: /usr/local/include/fltk/Choice.h /usr/local/include/fltk/Menu.h
+HeaderFl.o: /usr/local/include/fltk/IntInput.h
+HeaderFl.o: /usr/local/include/fltk/FloatInput.h
+HeaderFl.o: /usr/local/include/fltk/NumericInput.h ChannelNamesDlog.h
+HeaderFl.o: UI/ChannelNamesDlogUI.h /usr/local/include/fltk/TextEditor.h
+HeaderFl.o: /usr/local/include/fltk/TextDisplay.h
+HeaderFl.o: /usr/local/include/fltk/draw.h
+HeaderFl.o: /usr/local/include/fltk/PixelType.h
+HeaderFl.o: /usr/local/include/fltk/Scrollbar.h
+HeaderFl.o: /usr/local/include/fltk/Slider.h
+HeaderFl.o: /usr/local/include/fltk/TextBuffer.h
+HeaderFl.o: /usr/local/include/fltk/Font.h EditAgDlog.h UI/EditAgDlogUI.h
+HeaderFl.o: UnitsDlog.h UI/UnitsDlogUI.h EditDgDlog.h UI/EditDgDlogUI.h
+HeaderFl.o: /usr/local/include/Data/DisplayGr.h
+HeaderFl.o: /usr/local/include/fltk/CheckButton.h
+HeaderFl.o: /usr/local/include/fltk/Button.h
+HeaderFl.o: /usr/local/include/fltk/ValueInput.h EditRtAgDlog.h
+HeaderFl.o: UI/EditRtAgDlogUI.h /usr/local/include/fltk/InvisibleBox.h
+HeaderFl.o: /usr/local/include/Data/SampleGr.h
+HeaderFl.o: /usr/local/include/Data/AMode.h
+HeaderFl.o: /usr/local/include/Data/AnalysisGr.h
+HeaderFl.o: /usr/local/include/Glas/das_cmds.h
+HeaderFl.o: /usr/local/include/CXlib/cxlib.h /usr/local/include/fltk/ask.h
+HeaderFl.o: /usr/local/include/fltk/Divider.h /usr/include/ctype.h
+EditSgDlog.o: EditSgDlog.h UI/EditSgDlogUI.h /usr/local/include/fltk/Window.h
+EditSgDlog.o: /usr/local/include/fltk/Group.h
+EditSgDlog.o: /usr/local/include/Fltk/Dialog.h
+EditSgDlog.o: /usr/local/include/fltk/Group.h
+EditSgDlog.o: /usr/local/include/fltk/Button.h
+EditSgDlog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+EditSgDlog.o: /usr/include/features.h /usr/include/stdc-predef.h
+EditSgDlog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+EditSgDlog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+EditSgDlog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+EditSgDlog.o: /usr/include/_G_config.h /usr/include/wchar.h
+EditSgDlog.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+EditSgDlog.o: /usr/local/include/fltk/Input.h
+EditSgDlog.o: /usr/local/include/fltk/ValueOutput.h
+EditSgDlog.o: /usr/local/include/fltk/Valuator.h
+EditSgDlog.o: /usr/local/include/fltk/Choice.h /usr/local/include/fltk/Menu.h
+EditSgDlog.o: /usr/local/include/fltk/IntInput.h
+EditSgDlog.o: /usr/local/include/fltk/FloatInput.h
+EditSgDlog.o: /usr/local/include/fltk/NumericInput.h
+EditSgDlog.o: /usr/local/include/fltk/Input.h ChannelNamesDlog.h
+EditSgDlog.o: UI/ChannelNamesDlogUI.h /usr/local/include/fltk/TextEditor.h
+EditSgDlog.o: /usr/local/include/fltk/TextDisplay.h
+EditSgDlog.o: /usr/local/include/fltk/draw.h /usr/local/include/fltk/Flags.h
+EditSgDlog.o: /usr/local/include/fltk/Color.h
+EditSgDlog.o: /usr/local/include/fltk/FL_API.h
+EditSgDlog.o: /usr/local/include/fltk/Rectangle.h
+EditSgDlog.o: /usr/local/include/fltk/PixelType.h
+EditSgDlog.o: /usr/local/include/fltk/Widget.h
+EditSgDlog.o: /usr/local/include/fltk/Style.h
+EditSgDlog.o: /usr/local/include/fltk/Scrollbar.h
+EditSgDlog.o: /usr/local/include/fltk/Slider.h
+EditSgDlog.o: /usr/local/include/fltk/TextBuffer.h
+EditSgDlog.o: /usr/local/include/fltk/Font.h HeaderFl.h
+EditSgDlog.o: /usr/local/include/Data/DataHeader.h
+EditSgDlog.o: /usr/local/include/Data/SampleGr.h
+EditSgDlog.o: /usr/local/include/Data/ChannelSet.h
+EditSgDlog.o: /usr/local/include/Data/ChannelGr.h /usr/include/string.h
+EditSgDlog.o: /usr/include/xlocale.h /usr/local/include/Data/AnalysisGr.h
+EditSgDlog.o: /usr/local/include/Data/AModule.h
+EditSgDlog.o: /usr/local/include/Data/CData.h /usr/local/include/Math/MatD.h
+EditSgDlog.o: /usr/local/include/Data/DataTypes.h /usr/include/math.h
+EditSgDlog.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+EditSgDlog.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+EditSgDlog.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+EditSgDlog.o: /usr/include/bits/mathcalls.h
+EditSgDlog.o: /usr/local/include/PlotFl/DataDisplay.h
+EditSgDlog.o: /usr/local/include/Data/ModuleControls.h
+EditSgDlog.o: /usr/local/include/Patterns/Observer.h
+EditSgDlog.o: /usr/local/include/Patterns/Command.h
+EditSgDlog.o: /usr/local/include/Fltk/ProgressCmd.h
+EditSgDlog.o: /usr/local/include/Fltk/Progress.h
+EditSgDlog.o: /usr/local/include/fltk/ProgressBar.h
+EditSgDlog.o: /usr/local/include/fltk/run.h /usr/include/boost/shared_ptr.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/shared_ptr.hpp
+EditSgDlog.o: /usr/include/boost/config.hpp
+EditSgDlog.o: /usr/include/boost/config/user.hpp
+EditSgDlog.o: /usr/include/boost/config/select_compiler_config.hpp
+EditSgDlog.o: /usr/include/boost/config/compiler/gcc.hpp
+EditSgDlog.o: /usr/include/boost/config/select_platform_config.hpp
+EditSgDlog.o: /usr/include/boost/config/platform/linux.hpp
+EditSgDlog.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+EditSgDlog.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+EditSgDlog.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+EditSgDlog.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+EditSgDlog.o: /usr/include/time.h /usr/include/sys/select.h
+EditSgDlog.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+EditSgDlog.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+EditSgDlog.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+EditSgDlog.o: /usr/include/bits/stdlib-float.h
+EditSgDlog.o: /usr/include/boost/config/posix_features.hpp
+EditSgDlog.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+EditSgDlog.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+EditSgDlog.o: /usr/include/getopt.h /usr/include/boost/config/suffix.hpp
+EditSgDlog.o: /usr/include/boost/config/no_tr1/memory.hpp
+EditSgDlog.o: /usr/include/boost/assert.hpp /usr/include/assert.h
+EditSgDlog.o: /usr/include/boost/current_function.hpp
+EditSgDlog.o: /usr/include/boost/checked_delete.hpp
+EditSgDlog.o: /usr/include/boost/throw_exception.hpp
+EditSgDlog.o: /usr/include/boost/exception/detail/attribute_noreturn.hpp
+EditSgDlog.o: /usr/include/boost/detail/workaround.hpp
+EditSgDlog.o: /usr/include/boost/config.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/shared_count.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/bad_weak_ptr.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/sp_counted_base.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/sp_has_sync.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_x86.hpp
+EditSgDlog.o: /usr/include/boost/detail/sp_typeinfo.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp
+EditSgDlog.o: /usr/include/boost/utility/addressof.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/sp_convertible.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/spinlock_pool.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/spinlock.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/spinlock_pt.hpp
+EditSgDlog.o: /usr/include/pthread.h /usr/include/sched.h
+EditSgDlog.o: /usr/include/bits/sched.h /usr/include/bits/setjmp.h
+EditSgDlog.o: /usr/include/boost/memory_order.hpp
+EditSgDlog.o: /usr/include/boost/smart_ptr/detail/operator_bool.hpp
+EditSgDlog.o: /usr/local/include/Data/RtAnalysisGr.h
+EditSgDlog.o: /usr/local/include/fltk/Menu.h
+EditSgDlog.o: /usr/local/include/Data/SampleGr.h
+EditSgDlog.o: /usr/local/include/Data/DisplayGr.h EditDgDlog.h
+EditSgDlog.o: UI/EditDgDlogUI.h /usr/local/include/fltk/Output.h
+EditSgDlog.o: /usr/local/include/fltk/CheckButton.h
+EditSgDlog.o: /usr/local/include/fltk/Button.h
+EditSgDlog.o: /usr/local/include/fltk/ValueInput.h
+EditSgDlog.o: /usr/local/include/fltk/ask.h /usr/local/include/fltk/Divider.h
+EditAgDlog.o: EditAgDlog.h UI/EditAgDlogUI.h /usr/local/include/fltk/Window.h
+EditAgDlog.o: /usr/local/include/fltk/Group.h
+EditAgDlog.o: /usr/local/include/Fltk/Dialog.h
+EditAgDlog.o: /usr/local/include/fltk/Group.h
+EditAgDlog.o: /usr/local/include/fltk/Button.h
+EditAgDlog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+EditAgDlog.o: /usr/include/features.h /usr/include/stdc-predef.h
+EditAgDlog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+EditAgDlog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+EditAgDlog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+EditAgDlog.o: /usr/include/_G_config.h /usr/include/wchar.h
+EditAgDlog.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+EditAgDlog.o: /usr/local/include/fltk/Input.h
+EditAgDlog.o: /usr/local/include/fltk/Choice.h /usr/local/include/fltk/Menu.h
+EditAgDlog.o: /usr/local/include/fltk/ValueOutput.h
+EditAgDlog.o: /usr/local/include/fltk/Valuator.h ChannelNamesDlog.h
+EditAgDlog.o: UI/ChannelNamesDlogUI.h /usr/local/include/fltk/TextEditor.h
+EditAgDlog.o: /usr/local/include/fltk/TextDisplay.h
+EditAgDlog.o: /usr/local/include/fltk/draw.h /usr/local/include/fltk/Flags.h
+EditAgDlog.o: /usr/local/include/fltk/Color.h
+EditAgDlog.o: /usr/local/include/fltk/FL_API.h
+EditAgDlog.o: /usr/local/include/fltk/Rectangle.h
+EditAgDlog.o: /usr/local/include/fltk/PixelType.h
+EditAgDlog.o: /usr/local/include/fltk/Widget.h
+EditAgDlog.o: /usr/local/include/fltk/Style.h
+EditAgDlog.o: /usr/local/include/fltk/Scrollbar.h
+EditAgDlog.o: /usr/local/include/fltk/Slider.h
+EditAgDlog.o: /usr/local/include/fltk/TextBuffer.h
+EditAgDlog.o: /usr/local/include/fltk/Font.h UnitsDlog.h UI/UnitsDlogUI.h
+EditAgDlog.o: /usr/local/include/Data/AnalysisGr.h
+EditAgDlog.o: /usr/local/include/Data/DisplayGr.h
+EditAgDlog.o: /usr/local/include/Data/ChannelGr.h EditDgDlog.h
+EditAgDlog.o: UI/EditDgDlogUI.h /usr/local/include/fltk/Output.h
+EditAgDlog.o: /usr/local/include/fltk/Input.h
+EditAgDlog.o: /usr/local/include/fltk/CheckButton.h
+EditAgDlog.o: /usr/local/include/fltk/Button.h
+EditAgDlog.o: /usr/local/include/fltk/IntInput.h
+EditAgDlog.o: /usr/local/include/fltk/FloatInput.h
+EditAgDlog.o: /usr/local/include/fltk/NumericInput.h
+EditAgDlog.o: /usr/local/include/fltk/ValueInput.h
+EditAgDlog.o: /usr/local/include/Data/AMode.h
+EditAgDlog.o: /usr/local/include/Data/AModule.h
+EditAgDlog.o: /usr/local/include/Data/CData.h /usr/include/string.h
+EditAgDlog.o: /usr/include/xlocale.h /usr/local/include/Math/MatD.h
+EditAgDlog.o: /usr/local/include/Data/DataTypes.h /usr/include/math.h
+EditAgDlog.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+EditAgDlog.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+EditAgDlog.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+EditAgDlog.o: /usr/include/bits/mathcalls.h
+EditAgDlog.o: /usr/local/include/PlotFl/DataDisplay.h
+EditAgDlog.o: /usr/local/include/Data/ModuleControls.h
+EditAgDlog.o: /usr/local/include/Patterns/Observer.h
+EditAgDlog.o: /usr/local/include/Patterns/Command.h
+EditAgDlog.o: /usr/local/include/Fltk/ProgressCmd.h
+EditAgDlog.o: /usr/local/include/Fltk/Progress.h
+EditAgDlog.o: /usr/local/include/fltk/ProgressBar.h
+EditAgDlog.o: /usr/local/include/fltk/run.h /usr/include/boost/shared_ptr.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/shared_ptr.hpp
+EditAgDlog.o: /usr/include/boost/config.hpp
+EditAgDlog.o: /usr/include/boost/config/user.hpp
+EditAgDlog.o: /usr/include/boost/config/select_compiler_config.hpp
+EditAgDlog.o: /usr/include/boost/config/compiler/gcc.hpp
+EditAgDlog.o: /usr/include/boost/config/select_platform_config.hpp
+EditAgDlog.o: /usr/include/boost/config/platform/linux.hpp
+EditAgDlog.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+EditAgDlog.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+EditAgDlog.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+EditAgDlog.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+EditAgDlog.o: /usr/include/time.h /usr/include/sys/select.h
+EditAgDlog.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+EditAgDlog.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+EditAgDlog.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+EditAgDlog.o: /usr/include/bits/stdlib-float.h
+EditAgDlog.o: /usr/include/boost/config/posix_features.hpp
+EditAgDlog.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+EditAgDlog.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+EditAgDlog.o: /usr/include/getopt.h /usr/include/boost/config/suffix.hpp
+EditAgDlog.o: /usr/include/boost/config/no_tr1/memory.hpp
+EditAgDlog.o: /usr/include/boost/assert.hpp /usr/include/assert.h
+EditAgDlog.o: /usr/include/boost/current_function.hpp
+EditAgDlog.o: /usr/include/boost/checked_delete.hpp
+EditAgDlog.o: /usr/include/boost/throw_exception.hpp
+EditAgDlog.o: /usr/include/boost/exception/detail/attribute_noreturn.hpp
+EditAgDlog.o: /usr/include/boost/detail/workaround.hpp
+EditAgDlog.o: /usr/include/boost/config.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/shared_count.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/bad_weak_ptr.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/sp_counted_base.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/sp_has_sync.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_x86.hpp
+EditAgDlog.o: /usr/include/boost/detail/sp_typeinfo.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp
+EditAgDlog.o: /usr/include/boost/utility/addressof.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/sp_convertible.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/spinlock_pool.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/spinlock.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/spinlock_pt.hpp
+EditAgDlog.o: /usr/include/pthread.h /usr/include/sched.h
+EditAgDlog.o: /usr/include/bits/sched.h /usr/include/bits/setjmp.h
+EditAgDlog.o: /usr/include/boost/memory_order.hpp
+EditAgDlog.o: /usr/include/boost/smart_ptr/detail/operator_bool.hpp
+EditAgDlog.o: /usr/local/include/fltk/ask.h /usr/local/include/fltk/Divider.h
+EditDgDlog.o: EditDgDlog.h UI/EditDgDlogUI.h /usr/local/include/fltk/Window.h
+EditDgDlog.o: /usr/local/include/fltk/Group.h
+EditDgDlog.o: /usr/local/include/Fltk/Dialog.h
+EditDgDlog.o: /usr/local/include/fltk/Group.h
+EditDgDlog.o: /usr/local/include/fltk/Button.h
+EditDgDlog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+EditDgDlog.o: /usr/include/features.h /usr/include/stdc-predef.h
+EditDgDlog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+EditDgDlog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+EditDgDlog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+EditDgDlog.o: /usr/include/_G_config.h /usr/include/wchar.h
+EditDgDlog.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+EditDgDlog.o: /usr/local/include/Data/DisplayGr.h
+EditDgDlog.o: /usr/local/include/Data/ChannelGr.h
+EditDgDlog.o: /usr/local/include/fltk/Input.h
+EditDgDlog.o: /usr/local/include/fltk/Output.h
+EditDgDlog.o: /usr/local/include/fltk/Input.h
+EditDgDlog.o: /usr/local/include/fltk/ValueOutput.h
+EditDgDlog.o: /usr/local/include/fltk/Valuator.h
+EditDgDlog.o: /usr/local/include/fltk/CheckButton.h
+EditDgDlog.o: /usr/local/include/fltk/Button.h
+EditDgDlog.o: /usr/local/include/fltk/IntInput.h
+EditDgDlog.o: /usr/local/include/fltk/FloatInput.h
+EditDgDlog.o: /usr/local/include/fltk/NumericInput.h
+EditDgDlog.o: /usr/local/include/fltk/ValueInput.h
+EditDgDlog.o: /usr/local/include/Data/ChannelSet.h /usr/include/string.h
+EditDgDlog.o: /usr/include/xlocale.h /usr/local/include/fltk/ask.h
+EditDgDlog.o: /usr/local/include/fltk/FL_API.h
+EditDgDlog.o: /usr/local/include/fltk/Style.h /usr/local/include/fltk/Color.h
+EditDgDlog.o: /usr/local/include/fltk/Flags.h
+EditRtAgDlog.o: EditRtAgDlog.h UI/EditRtAgDlogUI.h
+EditRtAgDlog.o: /usr/local/include/fltk/Window.h
+EditRtAgDlog.o: /usr/local/include/fltk/Group.h
+EditRtAgDlog.o: /usr/local/include/Fltk/Dialog.h
+EditRtAgDlog.o: /usr/local/include/fltk/Group.h
+EditRtAgDlog.o: /usr/local/include/fltk/Button.h
+EditRtAgDlog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+EditRtAgDlog.o: /usr/include/features.h /usr/include/stdc-predef.h
+EditRtAgDlog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+EditRtAgDlog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+EditRtAgDlog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+EditRtAgDlog.o: /usr/include/_G_config.h /usr/include/wchar.h
+EditRtAgDlog.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+EditRtAgDlog.o: /usr/local/include/fltk/Input.h
+EditRtAgDlog.o: /usr/local/include/fltk/Choice.h
+EditRtAgDlog.o: /usr/local/include/fltk/Menu.h
+EditRtAgDlog.o: /usr/local/include/fltk/InvisibleBox.h
+EditRtAgDlog.o: /usr/local/include/fltk/Widget.h
+EditRtAgDlog.o: /usr/local/include/fltk/Style.h
+EditRtAgDlog.o: /usr/local/include/fltk/Color.h
+EditRtAgDlog.o: /usr/local/include/fltk/FL_API.h
+EditRtAgDlog.o: /usr/local/include/fltk/Flags.h
+EditRtAgDlog.o: /usr/local/include/fltk/Rectangle.h
+EditRtAgDlog.o: /usr/local/include/fltk/ValueInput.h
+EditRtAgDlog.o: /usr/local/include/fltk/Valuator.h
+EditRtAgDlog.o: /usr/local/include/fltk/FloatInput.h
+EditRtAgDlog.o: /usr/local/include/fltk/NumericInput.h
+EditRtAgDlog.o: /usr/local/include/fltk/Input.h
+EditRtAgDlog.o: /usr/local/include/Data/RtAnalysisGr.h
+EditRtAgDlog.o: /usr/local/include/Data/ChannelSet.h
+EditRtAgDlog.o: /usr/local/include/Data/ChannelGr.h /usr/include/string.h
+EditRtAgDlog.o: /usr/include/xlocale.h
+GainDialog.o: GainDialog.h /usr/local/include/HdrFl/GainDialogUI.h
+GainDialog.o: /usr/local/include/fltk/Window.h
+GainDialog.o: /usr/local/include/fltk/Group.h
+GainDialog.o: /usr/local/include/Fltk/Dialog.h
+GainDialog.o: /usr/local/include/fltk/Group.h
+GainDialog.o: /usr/local/include/fltk/Button.h
+GainDialog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+GainDialog.o: /usr/include/features.h /usr/include/stdc-predef.h
+GainDialog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+GainDialog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+GainDialog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+GainDialog.o: /usr/include/_G_config.h /usr/include/wchar.h
+GainDialog.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+GainDialog.o: /usr/local/include/fltk/Choice.h /usr/local/include/fltk/Menu.h
+GainDialog.o: /usr/local/include/fltk/Item.h /usr/local/include/fltk/Widget.h
+GainDialog.o: /usr/local/include/fltk/Style.h /usr/local/include/fltk/Color.h
+GainDialog.o: /usr/local/include/fltk/FL_API.h
+GainDialog.o: /usr/local/include/fltk/Flags.h
+GainDialog.o: /usr/local/include/fltk/Rectangle.h
+GainDialog.o: /usr/local/include/fltk/CheckButton.h
+GainDialog.o: /usr/local/include/fltk/Button.h
+GainDialog.o: /usr/local/include/Data/AdGain.h
+GainDialog.o: /usr/local/include/Data/ChannelGr.h
+ModuleNode.o: ModuleNode.h /usr/local/include/Fltk/FlNode.h
+ModuleNode.o: /usr/local/include/Fltk/FlArc.h
+ModuleNode.o: /usr/local/include/fltk/Widget.h
+ModuleNode.o: /usr/local/include/fltk/Color.h
+ModuleNode.o: /usr/local/include/fltk/FL_API.h
+ModuleNode.o: /usr/local/include/fltk/Flags.h
+ModuleNode.o: /usr/local/include/Fltk/FlNode.h
+ModuleNode.o: /usr/local/include/fltk/Button.h
+ModuleNode.o: /usr/local/include/Fltk/FlGraph.h
+ModuleNode.o: /usr/local/include/fltk/ScrollGroup.h
+ModuleNode.o: /usr/local/include/fltk/Group.h
+ModuleNode.o: /usr/local/include/fltk/Scrollbar.h
+ModuleNode.o: /usr/local/include/fltk/Slider.h
+ModuleNode.o: /usr/local/include/fltk/PopupMenu.h
+ModuleNode.o: /usr/local/include/fltk/Menu.h /usr/local/include/fltk/Item.h
+ModuleNode.o: /usr/local/include/fltk/Widget.h
+ModuleNode.o: /usr/local/include/fltk/Style.h /usr/local/include/fltk/Color.h
+ModuleNode.o: /usr/local/include/fltk/Rectangle.h
+ModuleNode.o: /usr/local/include/fltk/Cursor.h
+ModuleNode.o: /usr/local/include/Data/AModule.h
+ModuleNode.o: /usr/local/include/Data/CData.h /usr/include/stdio.h
+ModuleNode.o: /usr/include/features.h /usr/include/stdc-predef.h
+ModuleNode.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+ModuleNode.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+ModuleNode.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+ModuleNode.o: /usr/include/_G_config.h /usr/include/wchar.h
+ModuleNode.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+ModuleNode.o: /usr/include/string.h /usr/include/xlocale.h
+ModuleNode.o: /usr/local/include/Math/MatD.h
+ModuleNode.o: /usr/local/include/Data/DataTypes.h /usr/include/math.h
+ModuleNode.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+ModuleNode.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+ModuleNode.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+ModuleNode.o: /usr/include/bits/mathcalls.h
+ModuleNode.o: /usr/local/include/PlotFl/DataDisplay.h
+ModuleNode.o: /usr/local/include/Data/ModuleControls.h
+ModuleNode.o: /usr/local/include/Patterns/Observer.h
+ModuleNode.o: /usr/local/include/Patterns/Command.h
+ModuleNode.o: /usr/local/include/Fltk/ProgressCmd.h
+ModuleNode.o: /usr/local/include/Fltk/Progress.h
+ModuleNode.o: /usr/local/include/fltk/ProgressBar.h
+ModuleNode.o: /usr/local/include/fltk/Window.h /usr/local/include/fltk/run.h
+ModuleNode.o: /usr/include/boost/shared_ptr.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/shared_ptr.hpp
+ModuleNode.o: /usr/include/boost/config.hpp
+ModuleNode.o: /usr/include/boost/config/user.hpp
+ModuleNode.o: /usr/include/boost/config/select_compiler_config.hpp
+ModuleNode.o: /usr/include/boost/config/compiler/gcc.hpp
+ModuleNode.o: /usr/include/boost/config/select_platform_config.hpp
+ModuleNode.o: /usr/include/boost/config/platform/linux.hpp
+ModuleNode.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+ModuleNode.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+ModuleNode.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+ModuleNode.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+ModuleNode.o: /usr/include/time.h /usr/include/sys/select.h
+ModuleNode.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+ModuleNode.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+ModuleNode.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+ModuleNode.o: /usr/include/bits/stdlib-float.h
+ModuleNode.o: /usr/include/boost/config/posix_features.hpp
+ModuleNode.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+ModuleNode.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+ModuleNode.o: /usr/include/getopt.h /usr/include/boost/config/suffix.hpp
+ModuleNode.o: /usr/include/boost/config/no_tr1/memory.hpp
+ModuleNode.o: /usr/include/boost/assert.hpp /usr/include/assert.h
+ModuleNode.o: /usr/include/boost/current_function.hpp
+ModuleNode.o: /usr/include/boost/checked_delete.hpp
+ModuleNode.o: /usr/include/boost/throw_exception.hpp
+ModuleNode.o: /usr/include/boost/exception/detail/attribute_noreturn.hpp
+ModuleNode.o: /usr/include/boost/detail/workaround.hpp
+ModuleNode.o: /usr/include/boost/config.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/shared_count.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/bad_weak_ptr.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/sp_counted_base.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/sp_has_sync.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_x86.hpp
+ModuleNode.o: /usr/include/boost/detail/sp_typeinfo.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp
+ModuleNode.o: /usr/include/boost/utility/addressof.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/sp_convertible.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/spinlock_pool.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/spinlock.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/spinlock_pt.hpp
+ModuleNode.o: /usr/include/pthread.h /usr/include/sched.h
+ModuleNode.o: /usr/include/bits/sched.h /usr/include/bits/setjmp.h
+ModuleNode.o: /usr/include/boost/memory_order.hpp
+ModuleNode.o: /usr/include/boost/smart_ptr/detail/operator_bool.hpp
+ModuleNode.o: /usr/local/include/AModules/AModuleControlsInc.h
+ModuleNode.o: /usr/local/include/AModules/ActivityControls.h
+ModuleNode.o: /usr/local/include/Data/ModuleControls.h
+ModuleNode.o: /usr/local/include/Fltk/Dialog.h
+ModuleNode.o: /usr/local/include/fltk/Group.h
+ModuleNode.o: /usr/local/include/fltk/ValueSlider.h
+ModuleNode.o: /usr/local/include/fltk/FloatInput.h
+ModuleNode.o: /usr/local/include/fltk/NumericInput.h
+ModuleNode.o: /usr/local/include/fltk/Input.h
+ModuleNode.o: /usr/local/include/AModules/AreaControls.h
+ModuleNode.o: /usr/local/include/fltk/LightButton.h
+ModuleNode.o: /usr/local/include/fltk/CheckButton.h
+ModuleNode.o: /usr/local/include/fltk/Button.h
+ModuleNode.o: /usr/local/include/fltk/ValueInput.h
+ModuleNode.o: /usr/local/include/fltk/Valuator.h
+ModuleNode.o: /usr/local/include/AModules/BiActControls.h
+ModuleNode.o: /usr/local/include/AModules/BaseControls.h
+ModuleNode.o: /usr/local/include/fltk/CheckButton.h
+ModuleNode.o: /usr/local/include/AModules/BeatControls.h
+ModuleNode.o: /usr/local/include/AModules/Beat2Controls.h
+ModuleNode.o: /usr/local/include/AModules/DvdtControls.h
+ModuleNode.o: /usr/local/include/AModules/FftControls.h
+ModuleNode.o: /usr/local/include/AModules/FilterControls.h
+ModuleNode.o: /usr/local/include/AModules/MaxFreqControls.h
+ModuleNode.o: /usr/local/include/fltk/Choice.h
+ModuleNode.o: /usr/local/include/AModules/Oper1Controls.h
+ModuleNode.o: /usr/local/include/AModules/Oper2Controls.h
+ModuleNode.o: /usr/local/include/AModules/OpIntControls.h
+ModuleNode.o: /usr/local/include/AModules/OpIntPickControls.h
+ModuleNode.o: /usr/local/include/AModules/OpPickControls.h
+ModuleNode.o: /usr/local/include/AModules/OpRangeControls.h
+ModuleNode.o: /usr/local/include/AModules/OpVec2Controls.h
+ModuleNode.o: /usr/local/include/AModules/OpVecControls.h
+ModuleNode.o: /usr/local/include/AModules/PeakIntControls.h
+ModuleNode.o: /usr/local/include/AModules/PwelchControls.h
+ModuleNode.o: /usr/local/include/AModules/QWaveControls.h
+ModuleNode.o: /usr/local/include/AModules/SmoothControls.h
+ModuleNode.o: /usr/local/include/AModules/SignalAvgControls.h
+ModuleNode.o: /usr/local/include/AModules/SpatialControls.h
+ModuleNode.o: /usr/local/include/AModules/SysDiaControls.h
+ModuleNode.o: /usr/local/include/AModules/TWaveControls.h
+ModuleNode.o: /usr/local/include/AModules/UppaControls.h
+ModuleNode.o: /usr/local/include/AModules/VolCathChanControls.h
+ModuleNode.o: /usr/local/include/fltk/InvisibleBox.h
+ModuleNode.o: /usr/local/include/AModules/PVLoopControls.h
+ModuleNode.o: /usr/local/include/AModules/VolCathTauControls.h
+ModuleNode.o: /usr/local/include/AModules/VolCathOclControls.h
+ChannelNamesDlog.o: ChannelNamesDlog.h UI/ChannelNamesDlogUI.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Window.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Group.h
+ChannelNamesDlog.o: /usr/local/include/Fltk/Dialog.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Group.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Button.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+ChannelNamesDlog.o: /usr/include/features.h /usr/include/stdc-predef.h
+ChannelNamesDlog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+ChannelNamesDlog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+ChannelNamesDlog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+ChannelNamesDlog.o: /usr/include/_G_config.h /usr/include/wchar.h
+ChannelNamesDlog.o: /usr/include/bits/stdio_lim.h
+ChannelNamesDlog.o: /usr/include/bits/sys_errlist.h
+ChannelNamesDlog.o: /usr/local/include/fltk/TextEditor.h
+ChannelNamesDlog.o: /usr/local/include/fltk/TextDisplay.h
+ChannelNamesDlog.o: /usr/local/include/fltk/draw.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Flags.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Color.h
+ChannelNamesDlog.o: /usr/local/include/fltk/FL_API.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Rectangle.h
+ChannelNamesDlog.o: /usr/local/include/fltk/PixelType.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Widget.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Style.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Scrollbar.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Slider.h
+ChannelNamesDlog.o: /usr/local/include/fltk/TextBuffer.h
+ChannelNamesDlog.o: /usr/local/include/fltk/Font.h
+ChannelNamesDlog.o: /usr/local/include/Data/ChannelSet.h
+ChannelNamesDlog.o: /usr/local/include/Data/ChannelGr.h /usr/include/string.h
+ChannelNamesDlog.o: /usr/include/xlocale.h
+UnitsDlog.o: UnitsDlog.h UI/UnitsDlogUI.h /usr/local/include/fltk/Window.h
+UnitsDlog.o: /usr/local/include/fltk/Group.h /usr/local/include/Fltk/Dialog.h
+UnitsDlog.o: /usr/local/include/fltk/Group.h /usr/local/include/fltk/Button.h
+UnitsDlog.o: /usr/local/include/fltk/Widget.h /usr/include/stdio.h
+UnitsDlog.o: /usr/include/features.h /usr/include/stdc-predef.h
+UnitsDlog.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+UnitsDlog.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+UnitsDlog.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+UnitsDlog.o: /usr/include/_G_config.h /usr/include/wchar.h
+UnitsDlog.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+UnitsDlog.o: /usr/local/include/fltk/Input.h
